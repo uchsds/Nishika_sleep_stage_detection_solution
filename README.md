@@ -21,7 +21,7 @@
 ●特徴量作成<br>
 ・EEG Fpz-Cz, EEG Pz-Oz, EOG Pz-Oz, Resp oro-nasal, EMG submental, Temp rectalの30秒間(1epoch)の平均値, 標準偏差, epoch平均-全体平均, epoch標準偏差-全体標準偏差<br>
 ・EEG Fpz-Cz, EEG Pz-Oz, EOG Pz-Oz, Resp oro-nasal, EMG submental, Temp rectalの30秒間(1epoch)の平均値, 標準偏差<br>
-・EEG Fpz-Cz, EEG Pz-Ozの以下の周波数領域のパワースペクトル密度を取得<br>
+・EEG Fpz-Cz, EEG Pz-Ozの以下の周波数領域のパワースペクトル密度<br>
 　　デルタ波 　　　　　：0.4～4 Hz<br>
 　　シータ波　　　　　：4～8 Hz<br>
 　　スローアルファ波　：8～9 Hz<br>
@@ -29,8 +29,8 @@
 　　ファストアルファ波：12～14 Hz<br>
 　　ベータ波　　　　　：14～26 Hz<br>
 　　ガンマ波Low　　　：30～50 Hz<br>
-　　ガンマ波Medium　：60～80 Hz　 →この領域はNaNなので最終的にはdrop<br>
-　　ガンマ波High　　　：90～110 Hz　→この領域はNaNなので最終的にはdrop<br>
+　　ガンマ波Medium　：60～80 Hz　 →この領域は存在しないので最終的にはdrop<br>
+　　ガンマ波High　　　：90～110 Hz　→この領域は存在しないので最終的にはdrop<br>
 ・EOG horizontalも上の周波数領域を利用(細かく分割されているので)<br>
 ・EEG Fpz-Cz, EEG Pz-Oz, EOG horizontalの3種類のアルファ波パワースペクトル密度の合計値<br>
 ・ここまでに作成した特徴量の2区間のlag, ma, max, min, deruta<br>
@@ -40,17 +40,23 @@
 ・消灯してからの時間<br>
 <br>
 ●データの分割<br>
-・StratifiedGroup 5-Fold<br>
+・StratifiedGroup 5-Fold (groupはid)<br>
 <br>
 ●モデル<br>
 ・5つのデータセットに対してLightGBMモデル作成<br>
 ・ハイパーパラメーターはOptunaで最適化<br>
 <br>
+●後処理<br>
+・一つ前と一つ後の判定が同じときは間の判定状態を1つ前の判定に揃える<br>
+・覚醒からレムに移ることはないので、覚醒→レムのときレムの判定は覚醒に<br>
+<br>
 ●最終予測<br>
 ・5モデルの予測値の多数決<br>
-●提出ファイル<br>
-①：上記のモデル(暫定：0.819825, 最終：0.830471)<br>
-②：上記のモデルでlagなどの区間を2→1にしたもの(暫定：0.816517, 最終：0.827386)<br>
+<br>
+●予測結果<br>
+・CV：0.852919, 0.872428, 0.866832, 0.862979, 0.833410 <br>
+・暫定：0.819825<br>
+・最終：0.830471<br>
 <br>
 <br>
 <br>
