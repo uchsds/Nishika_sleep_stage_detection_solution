@@ -20,7 +20,7 @@
 ## 解法<br>
 ●特徴量作成<br>
 ・EEG Fpz-Cz, EEG Pz-Oz, EOG Pz-Oz, Resp oro-nasal, EMG submental, Temp rectalの30秒間(1epoch)の平均値, 標準偏差, epoch平均-全体平均, epoch標準偏差-全体標準偏差<br>
-・EEG Fpz-Cz, EEG Pz-Oz, EOG Pz-Oz, Resp oro-nasal, EMG submental, Temp rectalの30秒間(1epoch)の平均値, 標準偏差<br>
+・EEG Fpz-Cz, EEG Pz-Oz, EOG Pz-Oz, Resp oro-nasal, EMG submental, Temp rectalを標準化した後の30秒間(1epoch)の平均値, 標準偏差<br>
 ・EEG Fpz-Cz, EEG Pz-Ozの以下の周波数領域のパワースペクトル密度<br>
 　　デルタ波 　　　　　：0.4～4 Hz<br>
 　　シータ波　　　　　：4～8 Hz<br>
