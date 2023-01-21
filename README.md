@@ -34,7 +34,7 @@
 ・EOG horizontalも上の周波数領域を利用(細かく分割されているので)<br>
 ・EEG Fpz-Cz, EEG Pz-Oz, EOG horizontalの3種類のアルファ波パワースペクトル密度の合計値<br>
 ・ここまでに作成した特徴量の2区間のlag, ma, max, min, deruta<br>
-・治験日(1日目or2日目)<br>
+・測定日(1日目or2日目)<br>
 ・年齢<br>
 ・性別<br>
 ・消灯してからの時間<br>
